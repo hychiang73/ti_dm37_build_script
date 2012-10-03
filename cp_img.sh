@@ -7,7 +7,7 @@ KERNEL_IMAGE_PATH=$ANDROID_PATH/kernel/arch/arm/boot
 UBOOT_IMAGE_PATH=$ANDROID_PATH/u-boot
 XLOADER_IMAGE_PATH=$ANDROID_PATH/x-loader
 TAR_TOOL=$ANDROID_PATH/build/tools
-BOOT_TOOL=$ANDROID_PATH/tools/mk-bootscr
+BOOT_TOOL=$ANDROID_PATH/../tools/mk-bootscr
 
 ############# Copy all the system image and rootfs  ##############
 
@@ -72,5 +72,7 @@ cp -r $FILE_IMAGE_PATH/root/* $FILE_IMAGE_PATH/android_rootfs && cp -r $FILE_IMA
 cd $FILE_IMAGE_PATH
 sudo $TAR_TOOL/mktarball.sh $ANDROID_PATH/out/host/linux-x86/bin/fs_get_stats android_rootfs . rootfs rootfs.tar.bz2
 cp $FILE_IMAGE_PATH/rootfs.tar.bz2 $ANDROID_PATH/prebuilt_images/Filesystem
+
+cp $BOOT_TOOL/../mk-mmc/mkmmc-android.sh $ANDROID_PATH/prebuilt_images
 
 echo "Copy all the image finish !!"
