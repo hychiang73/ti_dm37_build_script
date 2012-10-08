@@ -14,8 +14,7 @@ export TARGET_PRODUCT=beagleboard
 export OMAPES=5.x
 
 if [ "$1" == "clean" ]; then
-    make clean
+    make OMAPES=5.x clean
 else
-    make droid kernel_build u-boot_build -j4 2>&1 |tee android_make.out
+    make TARGET_PRODUCT=beagleboard OMAPES=5.x -j8 2>&1 |tee android_make.out
 fi
-#make droid kernel_build wl12xx_compat -j8 2>&1 |tee android_make.out
